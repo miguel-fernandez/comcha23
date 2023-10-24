@@ -17,7 +17,8 @@ param_distributions = {"learning_rate": np.arange(0.01, 0.51, 0.01),
                        "n_estimators" : range(20, 255, 5)}
 
 
-search = HalvingRandomSearchCV(clf, param_distributions, verbose=1)
+search = HalvingRandomSearchCV(clf, param_distributions,
+                               verbose=1, random_state=42)
 search.fit(X, y)
 
 print(search.best_params_)

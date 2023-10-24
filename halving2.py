@@ -34,10 +34,12 @@ space2 = {"classifier": [GradientBoostingClassifier()],
 
 search_results = []
 for space in [space1, space2]:
-    search = HalvingRandomSearchCV(pipe, space, verbose=1)
+    search = HalvingRandomSearchCV(pipe, space,
+                                   verbose=1, random_state=42)
     search.fit(X, y)
 
     search_results += [{"params": search.best_params_,
                         "score" : search.best_score_}]
 
 print(search_results)
+B
